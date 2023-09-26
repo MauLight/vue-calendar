@@ -4,7 +4,7 @@
             <span class="d-block">{{ event.details }}</span>
             <div class="text-center flex gap-x-2">
                 <i class="fa fa-pencil-square edit-icon" @click="editEvent(event.details, day.id)"></i>
-                <i class="fa fa-trash-o delete-icon"></i>
+                <i class="fa fa-trash-o delete-icon" @click="deleteEvent(day.id, event.details)" ></i>
             </div>
         </div>
         <div class="flex flex-col justify-center items-center" v-else>
@@ -42,6 +42,9 @@ export default {
             if(newDetails === '') newDetails = oldDetails
             store.updateEvent(id, oldDetails, newDetails)
             this.newEventDetails = ''
+        },
+        deleteEvent(id, details) {
+            store.deleteEvent(id, details)
         }
     }
 }

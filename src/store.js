@@ -35,5 +35,9 @@ export const store = {
         const eventObj = this.getEvent(id, oldDetails)
         eventObj.details = newDetails
         eventObj.edit = false
+    },
+    deleteEvent(id, details) {
+        const dayObj = this.state.data.find(day => day.id === id)
+        dayObj.events = dayObj.events.filter(event => event.details !== details)
     }
 }
